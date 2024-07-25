@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+body {
+  /* background-image: url("./assets/mattblack.jpg"); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+}
+.card-b {
+  width: 100%;
+  border: 1px solid grey;
+  padding: 10px;
+  background: white;
+  max-width: 500px;
+  border-radius: 5px;
+}
+.input-cal {
+  height: 50px;
+  width: 100%;
+  text-align: end;
+}
+.input-cal:focus {
+  border: 1px solid rgb(74, 88, 240);
+}
+.input-cal:focus-visible {
+  outline: 1px solid rgb(74, 88, 240);
+}
+.center-flex {
+  padding-block: 10px;
+  display: flex;
+  justify-content: center;
+}
+.operations-cal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.max-256 {
+  max-width: 256px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.operations-cal span {
+  height: 40px;
+  width: 70px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  cursor: pointer;
+}
+
+@tailwind utilities;
