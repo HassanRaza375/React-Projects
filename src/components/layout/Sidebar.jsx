@@ -9,7 +9,7 @@ const Sidebar = () => {
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
-      style={{ width: "100%", maxWidth: "240px", height: "100vh" }}
+      style={{ width: "100%", maxWidth: "241px", height: "100vh" }}
     >
       <a
         href="/"
