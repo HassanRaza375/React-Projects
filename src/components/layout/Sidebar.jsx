@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sidebar = () => {
+const Sidebar = ({ setclinks, clinks }) => {
   const links = [
     { LinkName: "Home", url: "/" },
     { LinkName: "Posts", url: "/posts" },
@@ -24,15 +24,16 @@ const Sidebar = () => {
       <ul className="nav nav-pills flex-column mb-auto">
         {links.map((e, idx) => {
           return (
-            <li className="nav-item">
+            <li className="nav-item" key={idx + 1}>
               <a
                 href="#"
                 className={
                   "text-decoration-none nav-link text-white" +
                   " " +
-                  (idx === 0 ? "active" : "a")
+                  (clinks === e.LinkName ? "active" : "")
                 }
                 aria-current="page"
+                onClick={() => setclinks(e.LinkName)}
               >
                 <svg className="bi pe-none me-2" width="16" height="16">
                   <use xlinkHref="#home"></use>
