@@ -6,6 +6,7 @@ const defaultpostlist = [
     title: "Javascript",
     paragraph: "lorem fsdflsdfklsjfkl sjflsdkfjsdklfjk",
     reviews: 45,
+    tags: ["fun", "thrill", "exciting"],
   },
   {
     id: 2,
@@ -13,6 +14,7 @@ const defaultpostlist = [
     title: "FrameWorks",
     paragraph: "lorem fsdflsdfklsjfkl sjflsdkfjsdklfjk",
     reviews: 4,
+    tags: ["Rough", "Eagerness", "DownFall"],
   },
 ];
 export const PostsList = createContext({
@@ -26,7 +28,7 @@ const reducer = (state, action) => {
     case "ADD_POST":
       return [...state, action.payload];
     case "DELETE_POST":
-      return state.filter((post) => post.id !== action.payload);
+      return state.filter((post) => post.id !== action.payload.id);
     default:
       return state;
   }
@@ -36,11 +38,12 @@ const PostListProvider = ({ children }) => {
   const [posList, dispatchPostList] = useReducer(reducer, [...defaultpostlist]);
 
   const addPost = (post) => {
+    debugger;
     dispatchPostList({ type: "ADD_POST", payload: post });
   };
 
   const deletePost = (id) => {
-    dispatchPostList({ type: "DELETE_POST", payload: id });
+    dispatchPostList({ type: "DELETE_POST", payload: { id } });
   };
 
   return (
