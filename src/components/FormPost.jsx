@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { PostsList as PostData } from "../store/store-posts-item";
-const FormPost = () => {
+const FormPost = ({ setclinks }) => {
   const { addPost } = useContext(PostData);
   const title = useRef(null);
   const paragraph = useRef(null);
@@ -20,6 +20,7 @@ const FormPost = () => {
     paragraph.current.value = "";
     reviews.current.value = "";
     tags.current.value = "";
+    setclinks("Posts");
   };
   return (
     <form className="py-3">

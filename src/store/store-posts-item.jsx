@@ -38,7 +38,6 @@ const PostListProvider = ({ children }) => {
   const [posList, dispatchPostList] = useReducer(reducer, [...defaultpostlist]);
 
   const addPost = (post) => {
-    debugger;
     dispatchPostList({ type: "ADD_POST", payload: post });
   };
 

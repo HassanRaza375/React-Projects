@@ -22,7 +22,7 @@ function App() {
           <Header />
           {clinks === "Home" && ""}
           {clinks === "Posts" && <AllPost />}
-          {clinks === "Create Posts" && <FormPost />}
+          {clinks === "Create Posts" && <FormPost setclinks={setclinks} />}
           <Footer />
         </div>
       </div>
