@@ -1,22 +1,5 @@
-import { useReducer, createContext } from "react";
-const defaultpostlist = [
-  {
-    id: 1,
-    user_id: 3,
-    title: "Javascript",
-    paragraph: "lorem fsdflsdfklsjfkl sjflsdkfjsdklfjk",
-    reviews: 45,
-    tags: ["fun", "thrill", "exciting"],
-  },
-  {
-    id: 2,
-    user_id: 2,
-    title: "FrameWorks",
-    paragraph: "lorem fsdflsdfklsjfkl sjflsdkfjsdklfjk",
-    reviews: 4,
-    tags: ["Rough", "Eagerness", "DownFall"],
-  },
-];
+import { useReducer, createContext, useEffect } from "react";
+
 export const PostsList = createContext({
   posList: [],
   addPost: () => {},
@@ -26,7 +9,7 @@ export const PostsList = createContext({
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_POST":
-      return [...state, action.payload];
+      return [...state, ...action.payload];
     case "DELETE_POST":
       return state.filter((post) => post.id !== action.payload.id);
     default:
@@ -35,7 +18,14 @@ const reducer = (state, action) => {
 };
 
 const PostListProvider = ({ children }) => {
-  const [posList, dispatchPostList] = useReducer(reducer, [...defaultpostlist]);
+  const [posList, dispatchPostList] = useReducer(reducer, []);
+  useEffect(() => {
+    fetch("https://dummyjson.com/posts")
+      .then((res) => res.json())
+      .then((json) =>
+        dispatchPostList({ type: "ADD_POST", payload: json.posts })
+      );
+  }, []);
 
   const addPost = (post) => {
     dispatchPostList({ type: "ADD_POST", payload: post });

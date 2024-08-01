@@ -10,7 +10,7 @@ const AllPost = () => {
       <div className="row g-2">
         {posList.map((e, idx) => {
           return (
-            <div className="col-lg-4" key={e.title}>
+            <div className="col-lg-4" key={idx + 2}>
               <div className="card shadow position-relative">
                 <span
                   className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
@@ -23,10 +23,8 @@ const AllPost = () => {
                 </div>
                 <div className="body p-3">
                   <h2>{e.title}</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Alias eos ab in.
-                  </p>
+                  <p>{e.body}</p>
+                  <h3 className="py-3">views:{e.views}</h3>
                   <div
                     className={
                       "alert alert-primary mt-4" +
@@ -35,9 +33,9 @@ const AllPost = () => {
                     }
                     role="alert"
                   >
-                    {e.tags.map((e) => {
+                    {e.tags.map((e, i) => {
                       return (
-                        <span className="mr-2" key={e}>
+                        <span className="mr-2" key={i + 11 + "a"}>
                           #{e}
                         </span>
                       );

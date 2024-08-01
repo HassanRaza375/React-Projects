@@ -10,6 +10,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import FormPost from "./components/FormPost";
 import AllPost from "./components/AllPost";
+import Home from "./pages/Home.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PostListProvider from "./store/store-posts-item.jsx";
 function App() {
@@ -20,7 +21,7 @@ function App() {
         <SiderBar clinks={clinks} setclinks={setclinks} />
         <div className="container-fluid px-0">
           <Header />
-          {clinks === "Home" && ""}
+          {clinks === "Home" && <Home />}
           {clinks === "Posts" && <AllPost />}
           {clinks === "Create Posts" && <FormPost setclinks={setclinks} />}
           <Footer />
