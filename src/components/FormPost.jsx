@@ -11,8 +11,8 @@ const FormPost = ({ setclinks }) => {
       id: Math.random() + 3,
       user_id: Math.random() + 2,
       title: title.current.value,
-      paragraph: paragraph.current.value,
-      reviews: reviews.current.value,
+      body: paragraph.current.value,
+      views: reviews.current.value,
       tags: tags.current.value.split(","),
     };
     addPost(newobj);

@@ -4,31 +4,35 @@ export const PostsList = createContext({
   posList: [],
   addPost: () => {},
   deletePost: () => {},
+  FetchPost: () => {},
 });
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_POST":
-      return [...state, ...action.payload];
+      return [...state, action.payload];
     case "DELETE_POST":
       return state.filter((post) => post.id !== action.payload.id);
+    case "Fetch_POST":
+      return [...action.payload];
     default:
       return state;
   }
 };
 
 const PostListProvider = ({ children }) => {
-  const [posList, dispatchPostList] = useReducer(reducer, []);
   useEffect(() => {
     fetch("https://dummyjson.com/posts")
       .then((res) => res.json())
-      .then((json) =>
-        dispatchPostList({ type: "ADD_POST", payload: json.posts })
-      );
+      .then((json) => FetchPost(json.posts));
   }, []);
+  const [posList, dispatchPostList] = useReducer(reducer, []);
 
   const addPost = (post) => {
     dispatchPostList({ type: "ADD_POST", payload: post });
+  };
+  const FetchPost = (post) => {
+    dispatchPostList({ type: "Fetch_POST", payload: post });
   };
 
   const deletePost = (id) => {
@@ -36,7 +40,7 @@ const PostListProvider = ({ children }) => {
   };
 
   return (
-    <PostsList.Provider value={{ posList, addPost, deletePost }}>
+    <PostsList.Provider value={{ posList, addPost, deletePost, FetchPost }}>
       {children}
     </PostsList.Provider>
   );
